@@ -1,0 +1,7 @@
+name             'bootstrap-linux'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures bootstrap-linux'
+long_description 'Installs/Configures bootstrap-linux'
+version          '0.1.0'

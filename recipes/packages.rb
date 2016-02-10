@@ -30,3 +30,5 @@ if node['apps']['chefdk']
 end
 
 if node['apps']['terminator']
+  package 'terminator'
+end

@@ -14,6 +14,7 @@ default['apps']['docker']=true
 default['apps']['googlechrome']=true
 default['apps']['chefdk']=false
 default['apps']['virtualbox']=true
+default['apps']['terminator']=true
 
 # oh-my-zsh options
 default['ohmyzsh']['install']=true

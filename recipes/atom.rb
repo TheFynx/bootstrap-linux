@@ -16,10 +16,11 @@ if node[:atom][:install]
       end
   when 'ubuntu', 'debian', 'linuxmint'
       execute 'atom_install' do
-        command = "dnf install -y https://atom-installer.github.com/v#{node['atom']['version']}/atom.x86_64.rpm"
+        command = "curl -sL https://github.com/atom/atom/releases/download/v#{node['atom']['version']}/atom-amd64.deb | dpkg -i"
       end
-
-    end
+  when 'arch'
+    package 'atom-editor'
+  end
 end
 
 if node[:atom][:star_package_install]

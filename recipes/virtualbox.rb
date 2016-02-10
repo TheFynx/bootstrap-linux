@@ -30,6 +30,6 @@ case node[:platform]
       command = 'dnf install -y http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0-5.0.10_104061_fedora22-1.x86_64.rpm'
       not_if 'rpm -qa | grep virtualbox'
     end
-  when 'ubuntu', 'debian', 'linuxmint'
-
+  when 'ubuntu', 'debian', 'linuxmint', 'arch'
+    package 'virtualbox'
 end

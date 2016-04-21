@@ -7,10 +7,8 @@
 # Install Chef
 CHEFDIR=/var/chef/cookbooks
 
-if [ [ ! -f /usr/bin/chef-client ] || [ ! -f /usr/local/bin/chef-client ] ]; then
-  curl -L https://www.opscode.com/chef/install.sh -o install_chef.sh
-  sudo bash install_chef.sh
-  rm install_chef.sh
+if [[ ! -f /usr/bin/chef-client && /usr/local/bin/chef-client && /usr/sbin/chef-client ]]; then
+    curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c current -P chefdk
 fi
 
 # setup cookbooks directory

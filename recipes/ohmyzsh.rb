@@ -8,15 +8,20 @@
 #
 
 if node[:ohmyzsh][:install]
+  package 'zsh'
+
   execute 'ohmyzsh' do
-    command 'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+    command 'curl -S https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh'
+    cwd node['home']
+    user node['user']
     action :run
-    not_if { File.exists?('/bin/zsh') }
+    only_if { File.exists?('/bin/zsh') }
   end
 
-  template "#{node[:home]}/.zshrc" do
+  template "#{node['home']}/.zshrc" do
     source 'zshrc.erb'
-    owner node[:user]
+    user node['user']
+    owner node['user']
     mode 00744
   end
 end

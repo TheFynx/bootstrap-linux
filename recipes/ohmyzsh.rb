@@ -7,13 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
-if node[:ohmyzsh][:install]
+if node['ohmyzsh']['install']
   package 'zsh'
 
   execute 'ohmyzsh' do
-    command 'curl -S https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh'
+    command "curl -S https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sudo -u #{node['user']} bash"
     cwd node['home']
-    user node['user']
     action :run
     only_if { File.exists?('/bin/zsh') }
   end

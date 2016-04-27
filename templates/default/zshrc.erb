@@ -98,3 +98,21 @@ alias lt='ls -lrt'
 alias pgrep='ps -ef|grep'
 alias cnt='ls -l ./|grep -v ^l|wc -l'
 alias gitsc='git commit -S -a -m'
+
+# Kill All and Clean All
+alias dockerburnall='docker kill $(docker ps -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
+
+# Delete all images
+alias dockerburnimages='docker rmi $(docker images -q)'
+
+# Kill all running containers.
+alias dockerkillall='docker kill $(docker ps -q)'
+
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani'
